@@ -8,6 +8,8 @@
 
 namespace Cartograf\GeoCoder;
 
+use Cartograf\GeoCoder\Geocoder;
+
 class AWS extends GeoCoder {
   protected function getQueryString(Address $address) {
     $full_address = rawurlencode($address->street) . "," . rawurlencode($address->city) . "," . rawurlencode($address->state) . "," . rawurlencode($address->postalCode) . "," . rawurlencode($address->country);

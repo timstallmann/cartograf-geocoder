@@ -8,6 +8,8 @@
 
 namespace Cartograf\GeoCoder;
 
+use Cartograf\GeoCoder\Geocoder;
+
 class MapQuestNominatim extends GeoCoder {
   protected $apiKey;
 
