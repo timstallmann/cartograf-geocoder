@@ -1,0 +1,45 @@
+{
+    "name": "cartograf/geocoder",
+    "type": "library",
+    "description": "Barebones geocoder class using cUrl. Not a replacement for willdurand/geocoder",
+    "keywords": [
+        "cartograf",
+        "geocoder"
+    ],
+    "homepage": "https://github.com/timstallmann/cartograf-geocoder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Stallmann",
+            "email": "tim@tim-maps.com",
+            "homepage": "http://www.tim-maps.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cartograf\\GeoCoder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cartograf\\GeoCoder\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
