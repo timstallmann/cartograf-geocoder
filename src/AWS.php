@@ -17,7 +17,7 @@ class AWS extends GeoCoder {
   }
 
   protected function getLatLngFromResult(\stdClass $result) {
-    if ($result && property_exists($result, 'standard') && $result->standard->confidence >= 0.75) {
+    if ($result && property_exists($result, 'standard') && $result->standard->confidence >= $this->threshold) {
       $ret = new LatLng;
       $ret->longitude = $result->longt;
       $ret->latitude = $result->latt;

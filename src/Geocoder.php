@@ -12,6 +12,7 @@ abstract class GeoCoder {
   protected $curlHandle;
   protected $apiKey = FALSE;
   protected $baseUrl = '';
+  public $threshold = 0.5;
 
   abstract protected function getQueryString(Address $address);
   abstract protected function getLatLngFromResult(\stdClass $result);
