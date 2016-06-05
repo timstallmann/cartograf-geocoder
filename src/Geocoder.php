@@ -15,6 +15,7 @@ abstract class GeoCoder {
   public $threshold = 0.5;
 
   abstract protected function getQueryString(Address $address);
+  abstract protected function getQueryStringFromRawText($location);
   abstract protected function getLatLngFromResult(\stdClass $result);
 
   public function __construct($ch) {
@@ -38,9 +39,25 @@ abstract class GeoCoder {
     $this->apiKey = $api_key;
   }
 
-  public function geoCode(Address $address) {
-    if ($this->getBaseUrl() && $this->getQueryString($address)) {
-      $url = $this->getBaseUrl() . $this->getQueryString($address);
+  /**
+   * Geocode a given address.
+   *
+   * @param \Cartograf\GeoCoder\Address $address
+   *   Address object with fields specified, or NULL if using location.
+   * @param null $location
+   *   Raw string location with no fields specified.
+   *
+   * @return bool
+   */
+  public function geoCode(Address $address, $location = NULL) {
+    if ($address !== NULL) {
+      $query_string = $this->getQueryString($address);
+    }
+    else {
+      $query_string = $this->getQueryStringFromRawText($location);
+    }
+    if ($this->getBaseUrl() && $query_string) {
+      $url = $this->getBaseUrl() . $query_string;
       curl_setopt($this->curlHandle, CURLOPT_URL, $url);
       curl_setopt($this->curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($this->curlHandle, CURLOPT_SSL_VERIFYPEER, FALSE);

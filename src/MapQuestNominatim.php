@@ -22,6 +22,16 @@ class MapQuestNominatim extends GeoCoder {
     }
   }
 
+  protected function getQueryStringFromRawText($location) {
+    $base = '&outFormat=json&thumbMaps=false&maxResults=1';
+    if ($location !== FALSE && $location !== '') {
+      return $base . '&location=' . rawurlencode($location);
+    }
+    else {
+      return FALSE;
+    }
+  }
+
   protected function getQueryString(Address $address) {
     $base = '&outFormat=json&thumbMaps=false&maxResults=1';
     $return = '';
