@@ -49,7 +49,7 @@ abstract class GeoCoder {
    *
    * @return bool
    */
-  public function geoCode(Address $address, $location = NULL) {
+  public function geoCode(Address $address = NULL, $location = NULL) {
     if ($address !== NULL) {
       $query_string = $this->getQueryString($address);
     }
