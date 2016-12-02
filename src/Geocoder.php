@@ -62,10 +62,17 @@ abstract class GeoCoder {
       curl_setopt($this->curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($this->curlHandle, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-      $result = json_decode(curl_exec($this->curlHandle)) or trigger_error(curl_error($this->curlHandle));
+      $result = json_decode(curl_exec($this->curlHandle));
 
       if ($result) {
-        return $this->getLatLngFromResult($result);
+          $latLng = $this->getLatLngFromResult($result);
+          if ($latLng === FALSE) {
+              throw new \Exception('Could not fetch latitude/longitude from result: ' . print_r($result, TRUE));
+          }
+          return $latLng;
+      }
+      else {
+          throw new \Exception(curl_error($this->curlHandle));
       }
     }
     else {
