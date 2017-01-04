@@ -30,7 +30,7 @@ class USCensus extends GeoCoder {
   }
 
   public function getBaseUrl() {
-    return 'https://geocoding.geo.census.gov/geocoder/location/';
+    return 'https://geocoding.geo.census.gov/geocoder/locations/';
   }
 
   protected function getQueryStringFromRawText($location) {
