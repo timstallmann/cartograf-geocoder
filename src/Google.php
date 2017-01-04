@@ -25,9 +25,6 @@ class Google extends GeoCoder {
     $this->validLocationTypes = array('street_address', 'route', 'intersection', 'premise', 'subpremise');
   }
 
-  public function setMinGranularity($min_granularity) {
-  }
-
   public function getBaseUrl() {
     if ($this->apiKey) {
       return 'https://maps.googleapis.com/maps/api/geocode/json?key=' . $this->apiKey;
