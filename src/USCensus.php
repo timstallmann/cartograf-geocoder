@@ -65,7 +65,8 @@ class USCensus extends GeoCoder {
 
   protected function getLatLngFromResult(\stdClass $result) {
     $return = FALSE;
-    if ($result) {
+    if ($result && property_exists($result, "result")) {
+      $result = $result->result;
       if (property_exists($result, "addressMatches") && count($result->addressMatches) > 0) {
         $return = new LatLng;
         $return->latitude = $result->addressMatches[0]->coordinates->y;
